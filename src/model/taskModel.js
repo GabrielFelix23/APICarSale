@@ -14,6 +14,10 @@ const TaskSchema = new schema({
         type: String,
         required: true
     },
+    chassis:{
+        type: Number,
+        required: true
+    },
     year: {
         type: String,
         required: true
