@@ -12,6 +12,7 @@ class TaskController{
                 return res.status(500).json(error)
             })
     }
+
     async update(req, res){
         await taskModel.findByIdAndUpdate(
            {"_id": req.params.id}, req.body, {new: true}
@@ -23,9 +24,10 @@ class TaskController{
             return res.status(500).json(error)
         })
     }
+
     async list(req, res){
         await taskModel.find({
-            "macaddress": {"$in": req.body.macaddress}
+            "macaddress": {"$in": req.params.macaddress}
         })
         .then((response) => {
             return res.status(200).json(response)
@@ -34,6 +36,7 @@ class TaskController{
             return res.status(500).json(error)
         })
     }
+
     async listID(req, res){
         await taskModel.findById({"_id": req.params.id})
         .then((response) => {
@@ -43,6 +46,7 @@ class TaskController{
             return res.status(500).json(error)
         })
     }
+
     async delete(req, res){
         await taskModel.deleteOne({"_id": req.params.id})
         .then((response) => {

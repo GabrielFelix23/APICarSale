@@ -9,6 +9,6 @@ router.put("/:id", TaskController.update)
 router.get("/filter/:id", TaskController.listID)
 router.delete("/filter/:id", TaskController.delete)
 
-router.get("/filter/all", TaskController.list)
+router.get("/filter/all/:macaddress", TaskController.list)
 
 module.exports = router
