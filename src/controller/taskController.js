@@ -2,7 +2,7 @@ const taskModel = require('../model/taskModel')
 
 class TaskController{   
     async create(req, res){
-        const task = new TaskModel(req.body)
+        const task = new taskModel(req.body)
         await task
             .save()
             .then((response) => {
@@ -35,7 +35,16 @@ class TaskController{
         })
     }
     async listID(req, res){
-        await taskModel.findById(req.params.id)
+        await taskModel.findById({"_id": req.params.id})
+        .then((response) => {
+            return res.status(200).json(response)
+        })
+        .catch((error) => {
+            return res.status(500).json(error)
+        })
+    }
+    async delete(req, res){
+        await taskModel.deleteOne({"_id": req.params.id})
         .then((response) => {
             return res.status(200).json(response)
         })
