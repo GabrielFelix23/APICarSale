@@ -47,8 +47,9 @@ const TaskSchema = new schema({
         required: true
     },
     owner: {
-        name: {type: String,
-        required: true
+        name: {
+            type: String,
+            required: true
         },
         surname: {
             type: String,
@@ -63,7 +64,6 @@ const TaskSchema = new schema({
         type: Date,
         default: Date.now()
     }
-
 })
 
 module.exports = mongoose.model('CarSale', TaskSchema)
