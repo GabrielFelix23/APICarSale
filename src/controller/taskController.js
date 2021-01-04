@@ -40,7 +40,12 @@ class TaskController{
     async listID(req, res){
         await taskModel.findById({"_id": req.params.id})
         .then((response) => {
-            return res.status(200).json(response)
+            if(response){
+                return res.status(200).json(response)
+            }
+            else{
+                return res.status(500).json({error: "ID não identificado em nosso banco de dados!"})
+            }
         })
         .catch((error) => {
             return res.status(500).json(error)

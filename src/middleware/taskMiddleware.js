@@ -14,9 +14,7 @@ const TaskMiddleware = async(req, res, next) => {
         state, 
         city, 
         owner,
-        name,
-        surname, 
-        contact} = req.body
+        } = req.body
     
         if(!macaddress){
             return res.status(400).json({error: "Maddress é obrigatório!"})
@@ -59,6 +57,11 @@ const TaskMiddleware = async(req, res, next) => {
         }
         else if(!owner.contact){
             return res.status(400).json({error: "Contato é obrigatório!"})
+        }
+        else if(owner.contact.length < 15){
+            return res.status(400).json(
+                {error: "Quantidade de números não é correspondente há um número telefone celular!"}
+            )
         }
         else{
             let exist
