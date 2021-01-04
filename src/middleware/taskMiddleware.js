@@ -52,8 +52,14 @@ const TaskMiddleware = async(req, res, next) => {
         else if(!owner.name){
             return res.status(400).json({error: "Nome do proprietário é obrigatório!"})
         }
+        else if(owner.name.length < 3){
+            return res.status(400).json({error: "Nome muito pequeno!"})
+        }
         else if(!owner.surname){
             return res.status(400).json({error: "Sobrenome é obrigátorio!"})
+        }
+        else if(owner.surname.length < 3){
+            return res.status(400).json({error: "Sobrenome muito pequeno!"})
         }
         else if(!owner.contact){
             return res.status(400).json({error: "Contato é obrigatório!"})
