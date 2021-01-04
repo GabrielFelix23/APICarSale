@@ -7,4 +7,6 @@ const TaskMiddleware = require('../middleware/taskMiddleware')
 router.post("/", TaskMiddleware, TaskController.create)
 router.put("/:id", TaskController.update)
 
+router.get("/filter/all", TaskController.list)
+
 module.exports = router
