@@ -5,6 +5,7 @@ const TaskMiddleware = async(req, res, next) => {
         macaddress, 
         brand, 
         model, 
+        price,
         year, 
         km, 
         exchange, 
@@ -12,20 +13,19 @@ const TaskMiddleware = async(req, res, next) => {
         color, 
         shield, 
         state, 
-        city, 
-        owner,
+        city
         } = req.body
-    
-        if(!macaddress){
-            return res.status(400).json({error: "Maddress é obrigatório!"})
-        }
 
-        else if(!brand){
+        if(!brand){
             return res.status(400).json({error: "Marca é obrigatória!"})
         }
 
         else if(!model){
             return res.status(400).json({error: "Modelo é obrigatório!"})
+        }
+
+        else if(!price){
+            return res.status(400).json({error: "Preço é obrigatório!"})
         }
 
         else if(!year){
@@ -58,29 +58,6 @@ const TaskMiddleware = async(req, res, next) => {
 
         else if(!city){
             return res.status(400).json({error: "Cidade é obrigatório!"})
-        }
-
-        else if(!owner.name){
-            return res.status(400).json({error: "Nome do proprietário é obrigatório!"})
-        }
-        else if(owner.name.length < 3){
-            return res.status(400).json({error: "Nome muito pequeno!"})
-        }
-
-        else if(!owner.surname){
-            return res.status(400).json({error: "Sobrenome é obrigátorio!"})
-        }
-        else if(owner.surname.length < 3){
-            return res.status(400).json({error: "Sobrenome muito pequeno!"})
-        }
-
-        else if(!owner.contact){
-            return res.status(400).json({error: "Contato é obrigatório!"})
-        }
-        else if(owner.contact.length < 15){
-            return res.status(400).json(
-                {error: "Quantidade de números não é correspondente há um número telefone celular!"}
-            )
         }
         
         else{

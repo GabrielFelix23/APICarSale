@@ -38,7 +38,7 @@ class TaskController{
     }
 
     async listID(req, res){
-        await taskModel.findById({"_id": req.params.id})
+        await taskModel.findById(req.params.id)
         .then((response) => {
             if(response){
                 return res.status(200).json(response)

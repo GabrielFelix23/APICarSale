@@ -6,9 +6,9 @@ const TaskMiddleware = require('../middleware/taskMiddleware')
 const TaskMiddlewareChassis = require('../middleware/taskMiddlewareChassis')
 
 router.post("/", TaskMiddlewareChassis, TaskMiddleware, TaskController.create)
-router.put("/:id", TaskMiddlewareChassis, TaskController.update)
+router.put("/update/:id", TaskController.update)
 router.get("/filter/:id", TaskController.listID)
-router.delete("/filter/:id", TaskController.delete)
+router.delete("/delete/:id", TaskController.delete)
 
 router.get("/filter/all/:macaddress", TaskController.list)
 

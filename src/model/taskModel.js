@@ -14,6 +14,10 @@ const TaskSchema = new schema({
         type: String,
         required: true
     },
+    price: {
+        type: String,
+        require: true
+    },
     chassis:{
         type: Number,
         required: true
@@ -49,20 +53,6 @@ const TaskSchema = new schema({
     city:{
         type: String,
         required: true
-    },
-    owner: {
-        name: {
-            type: String,
-            required: true
-        },
-        surname: {
-            type: String,
-            required: true
-        },
-        contact: {
-            type: String,
-            required: true
-        },
     },
     created: {
         type: Date,
