@@ -6,6 +6,7 @@ const TaskMiddleware = async(req, res, next) => {
         brand, 
         model, 
         price,
+        chassis,
         year, 
         km, 
         exchange, 
@@ -26,6 +27,13 @@ const TaskMiddleware = async(req, res, next) => {
 
         else if(!price){
             return res.status(400).json({error: "Preço é obrigatório!"})
+        }
+
+        if(!chassis){
+            return res.status(400).json({error: "Chassi é obrigatório!"})
+        }
+        else if(chassis.length < 7 || chassis.length > 7){
+            return res.status(400).json({error: "Chassi incorreto!"})
         }
 
         else if(!year){
