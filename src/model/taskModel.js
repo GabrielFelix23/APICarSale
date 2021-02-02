@@ -23,11 +23,11 @@ const TaskSchema = new schema({
         required: true
     },
     year: {
-        type: String,
-        required: true
+        type: Number,
+        required: true,
     },
     km: {
-        type: Number,
+        type: String,
         required: true
     },
     exchange: {
